@@ -8,6 +8,12 @@ return PhpCsFixer\Config::create()
         '@PHP73Migration' => true,
         '@PhpCsFixer' => true,
         'array_syntax' => ['syntax' => 'short'],
+        'binary_operator_spaces' => [
+            'operators' => [
+                '=' => 'align_single_space_minimal',
+                '=>' => 'align_single_space_minimal',
+            ]
+        ],
         'concat_space' => ['spacing' => 'one'],
         'method_argument_space' => ['on_multiline' => 'ensure_fully_multiline'],
         'yoda_style' => ['equal' => false, 'identical' => false, 'less_and_greater' => false],
