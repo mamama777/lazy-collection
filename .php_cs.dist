@@ -2,26 +2,26 @@
 
 return PhpCsFixer\Config::create()
     ->setRules([
-        '@PHP56Migration' => true,
-        '@PHP70Migration' => true,
-        '@PHP71Migration' => true,
-        '@PHP73Migration' => true,
-        '@PhpCsFixer' => true,
-        'array_syntax' => ['syntax' => 'short'],
+        '@PHP56Migration'        => true,
+        '@PHP70Migration'        => true,
+        '@PHP71Migration'        => true,
+        '@PHP73Migration'        => true,
+        '@PhpCsFixer'            => true,
+        'array_syntax'           => ['syntax' => 'short'],
         'binary_operator_spaces' => [
             'operators' => [
-                '=' => 'align_single_space_minimal',
+                '='  => 'align_single_space_minimal',
                 '=>' => 'align_single_space_minimal',
-            ]
+            ],
         ],
-        'concat_space' => ['spacing' => 'one'],
-        'method_argument_space' => ['on_multiline' => 'ensure_fully_multiline'],
-        'yoda_style' => ['equal' => false, 'identical' => false, 'less_and_greater' => false],
-        'global_namespace_import' => true,
-        'self_static_accessor' => true,
+        'concat_space'                                     => ['spacing' => 'one'],
+        'method_argument_space'                            => ['on_multiline' => 'ensure_fully_multiline'],
+        'yoda_style'                                       => ['equal' => false, 'identical' => false, 'less_and_greater' => false],
+        'global_namespace_import'                          => true,
+        'self_static_accessor'                             => true,
         'nullable_type_declaration_for_default_null_value' => true,
-        'not_operator_with_successor_space' => true,
-        'simplified_null_return' => true,
+        'not_operator_with_successor_space'                => true,
+        'simplified_null_return'                           => true,
     ])
     ->setFinder(
         PhpCsFixer\Finder::create()
