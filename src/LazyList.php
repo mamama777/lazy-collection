@@ -83,7 +83,7 @@ class LazyList implements IteratorAggregate
         return $carry;
     }
 
-    public function count()
+    public function count(): int
     {
         return iterator_count($this->iterator);
     }
