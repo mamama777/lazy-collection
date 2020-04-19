@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace LazyCollection;
 
 use Iterator;
+use IteratorAggregate;
+use Traversable;
 
-class LazyList
+class LazyList implements IteratorAggregate
 {
     private $iterator;
 
@@ -73,5 +75,10 @@ class LazyList
     public function toArray(): array
     {
         return iterator_to_array($this->iterator);
+    }
+
+    public function getIterator(): Traversable
+    {
+        return $this->iterator;
     }
 }

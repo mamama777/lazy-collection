@@ -77,4 +77,19 @@ class LazyListTest extends TestCase
             $target->toArray()
         );
     }
+
+    public function testTraversable()
+    {
+        $target = LazyList::range(1, 3);
+
+        $result = [];
+        foreach ($target as $value) {
+            $result[] = $value;
+        }
+
+        $this->assertSame(
+            [1, 2, 3],
+            $result
+        );
+    }
 }
