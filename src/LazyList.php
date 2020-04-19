@@ -35,6 +35,19 @@ class LazyList
         return new static(new RewindableGenerator($generatorCreator));
     }
 
+    public function filter(callable $callback): self
+    {
+        $generator = function () use ($callback) {
+            foreach ($this->iterator as $value) {
+                if ($callback($value)) {
+                    yield $value;
+                }
+            }
+        };
+
+        return static::fromGenerator($generator);
+    }
+
     public function toArray(): array
     {
         return iterator_to_array($this->iterator);

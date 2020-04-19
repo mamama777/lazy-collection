@@ -25,6 +25,19 @@ class LazyListTest extends TestCase
         );
     }
 
+    public function testFilter()
+    {
+        $target         = LazyList::range(1, 5);
+        $isEvenCallback = function ($v) {
+            return $v & 1 === 1;
+        };
+
+        $this->assertSame(
+            [1, 3, 5],
+            $target->filter($isEvenCallback)->toArray()
+        );
+    }
+
     public function testReusable()
     {
         $target = LazyList::range(1, 3);
