@@ -64,6 +64,16 @@ class LazyListTest extends TestCase
         );
     }
 
+    public function testCount()
+    {
+        $target = LazyList::range(1, 3);
+
+        $this->assertSame(
+            3,
+            $target->count()
+        );
+    }
+
     public function testReusable()
     {
         $target = LazyList::range(1, 3);

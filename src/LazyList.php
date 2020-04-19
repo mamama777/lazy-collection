@@ -72,6 +72,11 @@ class LazyList implements IteratorAggregate
         return $carry;
     }
 
+    public function count()
+    {
+        return iterator_count($this->iterator);
+    }
+
     public function toArray(): array
     {
         return iterator_to_array($this->iterator);
