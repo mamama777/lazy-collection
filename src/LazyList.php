@@ -83,6 +83,31 @@ class LazyList implements IteratorAggregate
         return $carry;
     }
 
+    public function slice(int $offset, int $length = 0): self
+    {
+        $generator = function () use ($offset, $length) {
+            if ($offset < 0 || $length < 0) {
+                yield from array_slice(
+                    $this->toArray(),
+                    $offset,
+                    $length
+                );
+
+                return;
+            }
+
+            for (; $offset > 0; --$offset) {
+                $this->iterator->next();
+            }
+            for (; $length > 0; --$length) {
+                yield $this->iterator->current();
+                $this->iterator->next();
+            }
+        };
+
+        return static::fromGenerator($generator);
+    }
+
     public function count(): int
     {
         return iterator_count($this->iterator);

@@ -74,6 +74,31 @@ class LazyListTest extends TestCase
         );
     }
 
+    public function testSlice()
+    {
+        $target = LazyList::range(1, 5);
+
+        $this->assertSame(
+            [2, 3, 4],
+            $target->slice(1, 3)->toArray()
+        );
+
+        $this->assertSame(
+            [2, 3, 4],
+            $target->slice(-4, 3)->toArray()
+        );
+
+        $this->assertSame(
+            [1, 2, 3],
+            $target->slice(0, -2)->toArray()
+        );
+
+        $this->assertSame(
+            [3, 4],
+            $target->slice(-3, -1)->toArray()
+        );
+    }
+
     public function testCount()
     {
         $target = LazyList::range(1, 3);
