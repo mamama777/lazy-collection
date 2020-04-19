@@ -79,6 +79,6 @@ class LazyList implements IteratorAggregate
 
     public function getIterator(): Traversable
     {
-        return $this->iterator;
+        return clone $this->iterator;
     }
 }

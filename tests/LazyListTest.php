@@ -92,4 +92,21 @@ class LazyListTest extends TestCase
             $result
         );
     }
+
+    public function testNestedLoop()
+    {
+        $target = LazyList::range(1, 3);
+
+        $result = [];
+        foreach ($target as $value) {
+            foreach ($target as $value) {
+                $result[] = $value;
+            }
+        }
+
+        $this->assertSame(
+            [1, 2, 3, 1, 2, 3, 1, 2, 3],
+            $result
+        );
+    }
 }
