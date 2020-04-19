@@ -38,6 +38,19 @@ class LazyListTest extends TestCase
         );
     }
 
+    public function testMap()
+    {
+        $target         = LazyList::range(1, 3);
+        $squareCallback = function ($v) {
+            return $v ** 2;
+        };
+
+        $this->assertSame(
+            [1, 4, 9],
+            $target->map($squareCallback)->toArray()
+        );
+    }
+
     public function testReusable()
     {
         $target = LazyList::range(1, 3);

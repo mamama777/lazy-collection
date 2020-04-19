@@ -48,6 +48,17 @@ class LazyList
         return static::fromGenerator($generator);
     }
 
+    public function map(callable $callback): self
+    {
+        $generator = function () use ($callback) {
+            foreach ($this->iterator as $value) {
+                yield $callback($value);
+            }
+        };
+
+        return static::fromGenerator($generator);
+    }
+
     public function toArray(): array
     {
         return iterator_to_array($this->iterator);
