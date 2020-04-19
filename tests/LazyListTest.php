@@ -24,4 +24,18 @@ class LazyListTest extends TestCase
             LazyList::range($start, $end, $step)->toArray()
         );
     }
+
+    public function testReusable()
+    {
+        $target = LazyList::range(1, 3);
+
+        // first time
+        $target->toArray();
+
+        $this->assertSame(
+            [1, 2, 3],
+            // second time
+            $target->toArray()
+        );
+    }
 }

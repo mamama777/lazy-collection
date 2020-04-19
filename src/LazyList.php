@@ -30,9 +30,9 @@ class LazyList
     }
 
     public static function fromGenerator(
-        callable $generator
+        callable $generatorCreator
     ): self {
-        return new static($generator());
+        return new static(new RewindableGenerator($generatorCreator));
     }
 
     public function toArray(): array
