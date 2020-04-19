@@ -51,6 +51,19 @@ class LazyListTest extends TestCase
         );
     }
 
+    public function testReduce()
+    {
+        $target      = LazyList::range(1, 3);
+        $sumCallback = function ($carry, $value) {
+            return $carry + $value;
+        };
+
+        $this->assertSame(
+            16,
+            $target->reduce($sumCallback, 10)
+        );
+    }
+
     public function testReusable()
     {
         $target = LazyList::range(1, 3);

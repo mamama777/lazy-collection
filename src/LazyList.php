@@ -59,6 +59,17 @@ class LazyList
         return static::fromGenerator($generator);
     }
 
+    public function reduce(callable $callback, $initial = null)
+    {
+        $carry = $initial;
+
+        foreach ($this->iterator as $value) {
+            $carry = $callback($carry, $value);
+        }
+
+        return $carry;
+    }
+
     public function toArray(): array
     {
         return iterator_to_array($this->iterator);
