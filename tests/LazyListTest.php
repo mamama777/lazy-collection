@@ -25,6 +25,16 @@ class LazyListTest extends TestCase
         );
     }
 
+    public function testFill()
+    {
+        $target = LazyList::fill(3, 'a');
+
+        $this->assertSame(
+            ['a', 'a', 'a'],
+            $target->toArray()
+        );
+    }
+
     public function testFilter()
     {
         $target         = LazyList::range(1, 5);

@@ -31,6 +31,17 @@ class LazyList implements IteratorAggregate
         return static::fromGenerator($generator);
     }
 
+    public static function fill(int $num, $value): self
+    {
+        $generator = function () use ($num, $value) {
+            for (; $num > 0; --$num) {
+                yield $value;
+            }
+        };
+
+        return static::fromGenerator($generator);
+    }
+
     public static function fromGenerator(
         callable $generatorCreator
     ): self {
